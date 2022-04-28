@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Impulser - Powerful SMS Bomber for Bangladesh{% endblock %}
+{% block home %}active{% endblock %}
+{% block body %}
+<div align="center">
+	<div class="card mw-500 mw-full shadow">
+		<h2 class="card-title" style="font-size: 26px;">Impulser</h2>
+		<form onsubmit="return false" id="bomb-form">
+			<div class="form-group">
+				<label for="number" class="required float-left">Enter target number</label>
+				<input type="number" minlength="11" maxlength="11" id='number' name='number' required="" class="form-control" placeholder="Eg: 01963728466">
+			</div>
+			<div class="form-group">
+				<label for="amount" class="required float-left">Enter SMS amount</label>
+				<input type="number" id="amount" name="amount" required="" min="1" max="5000" class="form-control" placeholder="Eg: 50">
+			</div>
+			<div class="form-group">
+				<label for="mode" class="required float-left">Select any mode</label>
+				<select class="form-control" id="mode" name="mode">
+				  <option value="none" selected="">Choose any mode</option>
+				  <option value="rapid">Rapid Mode</option>
+				  <option value="powered">Powered Mode</option>
+				</select>
+				<a style="position: absolute;right: 30px;" data-toggle="modal" data-target="modal-6">Learn more &rarr;</a>
+			</div>
+			<div class="form-group">
+				<input style="margin-top: 18px;" class="btn btn-primary" id="submitwork" type="submit" value="Submit" >
+			</div>
+		</form>
+	</div>
+	<div style="height: 100px;"></div>
+</div>
+{% endblock %}
+{% block modal %}
+<div class="modal" id="modal-6" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button class="close" data-dismiss="modal" type="button" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h5 class="modal-title">What's difference between Rapid and Powered Mode?</h5>
+      <p class="font-size-16">Rapid Mode uses those api which are fast and unlimited. There is more success rate in Rapid Mode than Powered Mode. In the other hand, Powered Mode uses every api (even which apis has limits). Because of that, this mode is slow and there is more fail counter in Powered Mode than Rapid Mode. My recommendation is if you want to gain sms to showoff, you should use Rapid Mode. Else, if you want to prank your friend with huge amount of sms, please choose Powered Mode. Thanks</p>
+      <div class="text-right mt-20">
+        <button class="btn btn-primary" data-dismiss="modal" type="button">I understand</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block footer %}
+<script type="text/javascript">
+	document.getElementById('bomb-form').addEventListener('submit', submitform)
+</script>
+{% endblock %}

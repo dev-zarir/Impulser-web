@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+	<link rel="manifest" href="/static/favicon/site.webmanifest">
+	<title>{% block title %}{% endblock %}</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/halfmoon.min.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+	{% block head %}{% endblock %}
+</head>
+<body class="dark-mode">
+{% block modal %}{% endblock %}
+<div class="page-wrapper with-sidebar with-navbar" data-sidebar-type="overlayed-sm-and-down">
+  <div class="sticky-alerts"></div>
+<nav class="navbar shadow">
+  <div class="navbar-content">
+    <button class="btn btn-action sidebar-toggle" type="button"><i class="fa fa-bars"></i> </button>
+  </div>
+  <a href="/" class="navbar-brand">Impulser</a>
+  <span class="badge navbar-text text-monospace" style="margin-right: auto;">v1.7</span>
+  <div class="navbar-content">
+    <button class="btn btn-action theme-toggle"><i id="tglico" class="far fa-sun"></i></button>
+  </div>
+</nav>
+<div class="sidebar-overlay" onclick="impulser.toggleSidebar()"></div>
+<div class="sidebar shadow">
+      <div class="sidebar-menu">
+        <a href="/" class="sidebar-link {% block home %}{% endblock %}">Home</a>
+        <a href="https://github.com/dev-zarir/Impulser" target="_blank" class="sidebar-link">Fork me on Github</a>
+        <br />
+        <h5 class="sidebar-title bold">Find me at</h5>
+        <div class="sidebar-divider"></div>
+        <a href="https://technicalzarir.blogspot.com/" target="_blank" class="sidebar-link">Blogger</a>
+        <a href="https://www.youtube.com/channel/UCN3V6O9x0N7eUVLLUG3JpNQ" target="_blank" class="sidebar-link">Youtube</a>
+        <a href="https://www.facebook.com/smshahriar.zarir.94/" target="_blank" class="sidebar-link">Facebook</a>
+        <a href="https://www.instagram.com/shahriarzariradvance" target="_blank" class="sidebar-link">Instagram</a>
+      </div>
+    </div>
+  <div class="content-wrapper">  	
+		<div class="container-fluid">
+			<div class="content">
+				{% block body %}{% endblock %}
+			</div>
+			<div class="footer navbar">
+      <div align="center" class="text-center justify-content-center">
+        <p class="text-muted">© 2022 Impulser - All rights reserved | Designed by <a class="no-dec" href="https://technicalzarir.blogspot.com/" target="_blank">Technical Zarir</a></p>
+      </div>
+    </div>
+		</div>
+  </div>
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/halfmoon.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+	{% block footer %}{% endblock %}
+</body>
+</html>

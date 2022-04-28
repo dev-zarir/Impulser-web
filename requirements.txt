@@ -1,0 +1,4 @@
+cloudscraper==1.2.60
+Flask==2.1.1
+requests==2.27.1
+waitress==2.1.1

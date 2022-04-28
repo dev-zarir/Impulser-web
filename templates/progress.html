@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}Progress - Impulser{% endblock %}
+{% block body %}
+<div align="center">
+	<div class="card mw-500 mw-full shadow">
+		<h2 class="card-title" style="font-size: 26px;">Progress</h2>
+		<div class="table-responsive">		
+			<table class="table table-borderless">
+				<tr>
+					<td>ID :</td>
+					<td id="id">{{threadid}}</td>
+				</tr>
+				<tr>
+					<td>Number :</td>
+					<td id="number">{{number}}</td>
+				</tr>
+				<tr>
+					<td>Amount :</td>
+					<td id="amount">{{amount}}</td>
+				</tr>
+				<tr>
+					<td>Mode :</td>
+					<td id="mode">{{mode}}</td>
+				</tr>
+				<tr>
+					<td>Running :</td>
+					<td id="running">{{running}}</td>
+				</tr>
+				<tr>
+					<td>Completed :</td>
+					<td id="completed">{{completed}}</td>
+				</tr>
+				<tr>
+					<td>Total :</td>
+					<td id="total">{{total}}</td>
+				</tr>
+				<tr>
+					<td>Sent :</td>
+					<td id="sent">{{sent}}</td>
+				</tr>
+				<tr>
+					<td>Failed :</td>
+					<td id="failed">{{failed}}</td>
+				</tr>
+				<tr>
+					<td>Progress :</td>
+					<td id="progress">{{progress}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="progress h-20 my-20">
+  		<div class="progress-bar{% if running=='yes' %} progress-bar-animated{% endif %}{% if completed=='yes' %} bg-success{% endif %}{% if completed=='no' and running=='no' %} bg-danger{% endif %}" role="progressbar" id="progressbar" style="width: {{progress}}">{{progress}}</div>
+		</div>
+		<button id="stopbtn"{% if running=='no' %} style="display: none;"{% endif %} class="btn btn-block btn-danger btn-rounded" data-toggle="modal" data-target="modal-6">Stop Bombing</button>
+		<button id="back-to-home"{% if running=='yes' %} style="display: none;"{% endif %} class="btn btn-block btn-primary btn-rounded" onclick="window.location.href='/'">Back to home</button>
+	</div>
+</div>
+<div style="height: 100px;"></div>
+{% endblock %}
+{% block modal %}
+<div class="modal" id="modal-6" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <button class="close" data-dismiss="modal" type="button" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h5 class="modal-title">Are you sure?</h5>
+      <p class="font-size-16">This action will stop bombing for this thread. You can't resume this bombing again! Do you want to stop?</p>
+      <div class="text-right mt-20">
+        <button class="btn" id="close-modal" data-dismiss="modal" type="button">No, I changed my mind</button>
+        <button id="stop-bomb" class="btn btn-danger" data-dismiss="modal" type="button">Yes, Stop</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block footer %}
+<script type="text/javascript">
+	setInterval(update_info, 1000)
+	document.getElementById('stop-bomb').addEventListener('click', stop_bomb)
+</script>
+{% endblock %}
